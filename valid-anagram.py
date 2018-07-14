@@ -5,23 +5,13 @@ class Solution:
         :type t: str
         :rtype: bool
         """
-        if len(s) != len(t):
-            return False
-
-        dic = {}
-
+        dic1, dic2 = {}, {}
         for c in s:
-            if c in dic:
-                dic[c] += 1
-            else:
-                dic[c] = 1
-
+            dic1[c] = dic1.get(c,0) + 1
         for c in t:
-            if c in dic:
-                dic[c] -= 1
-                if dic[c] == 0:
-                    del dic[c]
-            else:
-                return False
+            dic2[c] = dic2.get(c,0) + 1
+        return dic1 == dic2
 
-        return True
+if __name__ == "__main__" :
+    s = Solution()
+    print(s.isAnagram("ABB","BBA"))
